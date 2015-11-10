@@ -15,14 +15,20 @@
     from apk_info
     where version_code = #{versionCode,jdbcType=INTEGER}
   </select>
+  <select id="selectLatestApk" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List"></include>
+  	from apk_info
+  	where version_code = (select max(version_code) from apk_info)
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from apk_info
     where version_code = #{versionCode,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.lam.ouraccounts.bean.ApkInfo" >
-    insert into apk_info (version_code, version_name, download_url
+    insert into apk_info (version_name, download_url
       )
-    values (#{versionCode,jdbcType=INTEGER}, #{versionName,jdbcType=VARCHAR}, #{downloadUrl,jdbcType=VARCHAR}
+    values (#{versionName,jdbcType=VARCHAR}, #{downloadUrl,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.lam.ouraccounts.bean.ApkInfo" >

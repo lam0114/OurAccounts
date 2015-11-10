@@ -10,8 +10,7 @@ public class ApkInfo {
 		super();
 	}
 
-	public ApkInfo(Integer versionCode, String versionName, String downloadUrl) {
-		this.versionCode = versionCode;
+	public ApkInfo(String versionName, String downloadUrl) {
 		this.versionName = versionName;
 		this.downloadUrl = downloadUrl;
 	}

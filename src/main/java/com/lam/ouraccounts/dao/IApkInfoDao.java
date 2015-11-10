@@ -14,4 +14,6 @@ public interface IApkInfoDao {
 	int updateByPrimaryKeySelective(ApkInfo record);
 
 	int updateByPrimaryKey(ApkInfo record);
+	
+	ApkInfo selectLatestApk();
 }
