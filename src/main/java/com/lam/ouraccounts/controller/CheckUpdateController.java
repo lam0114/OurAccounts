@@ -16,5 +16,5 @@ public class CheckUpdateController {
 		ApkInfo apk = new ApkInfo(2, "1.2", "http://133.130.89.237:8080/resouces/app-release.apk");
 		return JSON.toJSONString(apk);
 	}
-
+	
 }
