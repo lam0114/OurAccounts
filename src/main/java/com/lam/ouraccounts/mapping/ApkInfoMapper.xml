@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lam.ouraccounts.dao.IApkInfoDao" >
+  <resultMap id="BaseResultMap" type="com.lam.ouraccounts.bean.ApkInfo" >
+    <id column="version_code" property="versionCode" jdbcType="INTEGER" />
+    <result column="version_name" property="versionName" jdbcType="VARCHAR" />
+    <result column="download_url" property="downloadUrl" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    version_code, version_name, download_url
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from apk_info
+    where version_code = #{versionCode,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from apk_info
+    where version_code = #{versionCode,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.lam.ouraccounts.bean.ApkInfo" >
+    insert into apk_info (version_code, version_name, download_url
+      )
+    values (#{versionCode,jdbcType=INTEGER}, #{versionName,jdbcType=VARCHAR}, #{downloadUrl,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.lam.ouraccounts.bean.ApkInfo" >
+    insert into apk_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="versionCode != null" >
+        version_code,
+      </if>
+      <if test="versionName != null" >
+        version_name,
+      </if>
+      <if test="downloadUrl != null" >
+        download_url,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="versionCode != null" >
+        #{versionCode,jdbcType=INTEGER},
+      </if>
+      <if test="versionName != null" >
+        #{versionName,jdbcType=VARCHAR},
+      </if>
+      <if test="downloadUrl != null" >
+        #{downloadUrl,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lam.ouraccounts.bean.ApkInfo" >
+    update apk_info
+    <set >
+      <if test="versionName != null" >
+        version_name = #{versionName,jdbcType=VARCHAR},
+      </if>
+      <if test="downloadUrl != null" >
+        download_url = #{downloadUrl,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where version_code = #{versionCode,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lam.ouraccounts.bean.ApkInfo" >
+    update apk_info
+    set version_name = #{versionName,jdbcType=VARCHAR},
+      download_url = #{downloadUrl,jdbcType=VARCHAR}
+    where version_code = #{versionCode,jdbcType=INTEGER}
+  </update>
+</mapper>

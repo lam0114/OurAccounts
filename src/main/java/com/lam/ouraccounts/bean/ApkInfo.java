@@ -2,7 +2,7 @@ package com.lam.ouraccounts.bean;
 
 public class ApkInfo {
 
-	private int versionCode;
+	private Integer versionCode;
 	private String versionName;
 	private String downloadUrl;
 
@@ -10,17 +10,17 @@ public class ApkInfo {
 		super();
 	}
 
-	public ApkInfo(int versionCode, String versionName, String downloadUrl) {
+	public ApkInfo(Integer versionCode, String versionName, String downloadUrl) {
 		this.versionCode = versionCode;
 		this.versionName = versionName;
 		this.downloadUrl = downloadUrl;
 	}
 
-	public int getVersionCode() {
+	public Integer getVersionCode() {
 		return versionCode;
 	}
 
-	public void setVersionCode(int versionCode) {
+	public void setVersionCode(Integer versionCode) {
 		this.versionCode = versionCode;
 	}
 
