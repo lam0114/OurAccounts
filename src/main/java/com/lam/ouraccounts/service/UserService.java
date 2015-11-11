@@ -1,12 +1,12 @@
 package com.lam.ouraccounts.service;
 
-import org.springframework.stereotype.Service;
+import java.util.Map;
 
-import com.lam.ouraccounts.bean.User;
+import org.springframework.stereotype.Service;
 
 @Service
 public interface UserService {
 
-	public User login(String param, String pwd);
+	public Map<String, Integer> login(String username, String password);
 
 }

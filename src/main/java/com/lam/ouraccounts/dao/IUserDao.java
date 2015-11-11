@@ -1,7 +1,5 @@
 package com.lam.ouraccounts.dao;
 
-import java.util.Map;
-
 import com.lam.ouraccounts.bean.User;
 
 public interface IUserDao {
@@ -17,5 +15,6 @@ public interface IUserDao {
 
 	int updateByPrimaryKey(User record);
 
-	User login(Map<String, String> params);
+	User getUserByUserName(String userName);
+
 }

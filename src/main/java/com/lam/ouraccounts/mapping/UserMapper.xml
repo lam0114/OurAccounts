@@ -14,14 +14,13 @@
   <sql id="Base_Column_List" >
     user_id, user_name, mobile, email, pwd, nickname, head_portrait, remark
   </sql>
-  <select id="login" resultMap="BaseResultMap" parameterType="map">
+  <select id="getUserByUserName" resultMap="BaseResultMap" parameterType="java.lang.String">
   	select
   	<include refid="Base_Column_List" />
   	from user
   	where user_name = #{param,jdbcType=VARCHAR}
   	or	  mobile = #{param,jdbcType=VARCHAR}
   	or    email = #{param,jdbcType=VARCHAR}
-  	and   pwd = #{pwd,jdbcType=VARCHAR}
   </select>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
