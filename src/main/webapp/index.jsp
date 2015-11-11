@@ -14,12 +14,14 @@
 	</form>
 </body>
 <script>
-	/* function check() {
+	function check() {
 		var val = document.getElementsByName('file')[0].value;
 		var type = val.substring(val.lastIndexOf('.') + 1);
 		console.log(type);
-		if (type !== 'apk')
+		if (type !== 'apk') {
+			alert('请上传apk文件');
 			return false;
-	} */
+		}
+	}
 </script>
 </html>
