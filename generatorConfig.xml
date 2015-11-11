@@ -36,8 +36,14 @@
 			type="XMLMAPPER" targetProject="src/main/java">
 			<property name="enableSubPackages" value="true" />
 		</javaClientGenerator>
-
-		<table tableName="apk_info" domainObjectName="ApkInfo"
+		
+		<!-- generate ApkInfo -->
+		<!-- <table tableName="apk_info" domainObjectName="ApkInfo"
+			enableCountByExample="false" enableUpdateByExample="false"
+			enableDeleteByExample="false" enableSelectByExample="false"
+			selectByExampleQueryId="false"></table> -->
+		<!-- generate User -->
+		<table tableName="user" domainObjectName="User"
 			enableCountByExample="false" enableUpdateByExample="false"
 			enableDeleteByExample="false" enableSelectByExample="false"
 			selectByExampleQueryId="false"></table>
