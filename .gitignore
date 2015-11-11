@@ -1,3 +1,5 @@
+# -------- custom --------
+jdbc.properties
 # ———————————OSX.gitignore begin———————————
 .DS_Store
 .AppleDouble
