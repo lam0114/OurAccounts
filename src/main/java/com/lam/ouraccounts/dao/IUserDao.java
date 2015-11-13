@@ -15,6 +15,11 @@ public interface IUserDao {
 
 	int updateByPrimaryKey(User record);
 
-	User getUserByUserName(String userName);
+	/**
+	 * Query user based on parameter
+	 * @param param username or mobile or email
+	 * @return	return an user if exist, if not return null
+	 */
+	User getUserByParam(String param);
 
 }

@@ -1,5 +1,6 @@
 package com.lam.ouraccounts.controller;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -23,6 +24,15 @@ public class UserController {
 	@ResponseBody
 	public String login(@RequestParam("username") String username, @RequestParam("password") String password) {
 		Map<String, Integer> map = userService.login(username, password);
+		return JSON.toJSONString(map);
+	}
+
+	@RequestMapping("/register")
+	@ResponseBody
+	public String register(@RequestParam("username") String username, @RequestParam("password") String password) {
+		int r = userService.register(username, password);
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("status", r);
 		return JSON.toJSONString(map);
 	}
 

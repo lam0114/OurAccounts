@@ -23,7 +23,7 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public Map<String, Integer> login(String username, String password) {
 		Map<String, Integer> map = new HashMap<String, Integer>();
-		User user = userDao.getUserByUserName(username);
+		User user = userDao.getUserByParam(username);
 		if (user != null) {
 			if (MD5.getMD5(password.trim()).equals(user.getPwd())) {
 				map.put("status", 2);
@@ -34,6 +34,21 @@ public class UserServiceImpl implements UserService {
 			map.put("status", 0);
 		}
 		return map;
+	}
+
+	@Override
+	public int register(String username, String password) {
+		User user = userDao.getUserByParam(username);
+		if (user == null) {
+			user = new User();
+			user.setUserId(System.currentTimeMillis() + "");
+			user.setUserName(username);
+			user.setPwd(MD5.getMD5(password));
+			userDao.insert(user);
+			return 1;
+		} else {
+			return 0;
+		}
 	}
 
 }
