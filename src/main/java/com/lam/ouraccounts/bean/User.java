@@ -10,6 +10,7 @@ public class User {
 	private String nickname;
 	private String headPortrait;
 	private String remark;
+	private String createTime;
 
 	public User() {
 		super();
@@ -77,5 +78,13 @@ public class User {
 
 	public void setRemark(String remark) {
 		this.remark = remark == null ? null : remark.trim();
+	}
+
+	public String getCreateTime() {
+		return createTime;
+	}
+
+	public void setCreateTime(String createTime) {
+		this.createTime = createTime == null ? null : createTime.trim();
 	}
 }

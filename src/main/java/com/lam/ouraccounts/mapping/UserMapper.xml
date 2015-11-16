@@ -10,9 +10,10 @@
     <result column="nickname" property="nickname" jdbcType="VARCHAR" />
     <result column="head_portrait" property="headPortrait" jdbcType="VARCHAR" />
     <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    user_id, user_name, mobile, email, pwd, nickname, head_portrait, remark
+    user_id, user_name, mobile, email, pwd, nickname, head_portrait, remark, create_time
   </sql>
   <select id="getUserByParam" resultMap="BaseResultMap" parameterType="java.lang.String">
   	select
@@ -35,10 +36,12 @@
   <insert id="insert" parameterType="com.lam.ouraccounts.bean.User" >
     insert into user (user_id, user_name, mobile, 
       email, pwd, nickname, 
-      head_portrait, remark)
+      head_portrait, remark, create_time
+      )
     values (#{userId,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR}, 
       #{email,jdbcType=VARCHAR}, #{pwd,jdbcType=VARCHAR}, #{nickname,jdbcType=VARCHAR}, 
-      #{headPortrait,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR})
+      #{headPortrait,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, #{createTime,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.lam.ouraccounts.bean.User" >
     insert into user
@@ -67,6 +70,9 @@
       <if test="remark != null" >
         remark,
       </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="userId != null" >
@@ -92,6 +98,9 @@
       </if>
       <if test="remark != null" >
         #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -119,6 +128,9 @@
       <if test="remark != null" >
         remark = #{remark,jdbcType=VARCHAR},
       </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=VARCHAR},
+      </if>
     </set>
     where user_id = #{userId,jdbcType=VARCHAR}
   </update>
@@ -130,7 +142,8 @@
       pwd = #{pwd,jdbcType=VARCHAR},
       nickname = #{nickname,jdbcType=VARCHAR},
       head_portrait = #{headPortrait,jdbcType=VARCHAR},
-      remark = #{remark,jdbcType=VARCHAR}
+      remark = #{remark,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=VARCHAR}
     where user_id = #{userId,jdbcType=VARCHAR}
   </update>
 </mapper>
