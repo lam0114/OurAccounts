@@ -3,6 +3,7 @@ package com.lam.ouraccounts.util;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.TimeZone;
 
 import org.apache.commons.lang.time.DateFormatUtils;
 
@@ -37,7 +38,7 @@ public class Constant {
 	 */
 	public static String getCurrentDate() {
 		Calendar calendar = Calendar.getInstance();
-		String date = DateFormatUtils.format(calendar, "yyyy-MM-dd HH:mm:ss");
+		String date = DateFormatUtils.format(calendar, "yyyy-MM-dd HH:mm:ss", TimeZone.getTimeZone("Etc/GMT-8"));
 		return date;
 	}
 }
