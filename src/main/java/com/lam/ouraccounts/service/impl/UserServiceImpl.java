@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import com.lam.ouraccounts.bean.User;
 import com.lam.ouraccounts.dao.IUserDao;
 import com.lam.ouraccounts.service.UserService;
+import com.lam.ouraccounts.util.Constant;
 import com.lam.ouraccounts.util.MD5;
 
 @Service("userService")
@@ -40,10 +41,13 @@ public class UserServiceImpl implements UserService {
 	public int register(String username, String password) {
 		User user = userDao.getUserByParam(username);
 		if (user == null) {
+			Map<String, String> map = Constant.createProcedureParams("user");
+			userDao.generateID(map);
 			user = new User();
-			user.setUserId(System.currentTimeMillis() + "");
+			user.setUserId(Constant.getID(map));
 			user.setUserName(username);
 			user.setPwd(MD5.getMD5(password));
+			user.setCreateTime(Constant.getCurrentDate());
 			userDao.insert(user);
 			return 1;
 		} else {

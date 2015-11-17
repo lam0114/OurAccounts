@@ -1,5 +1,7 @@
 package com.lam.ouraccounts.dao;
 
+import java.util.Map;
+
 import com.lam.ouraccounts.bean.User;
 
 public interface IUserDao {
@@ -17,9 +19,16 @@ public interface IUserDao {
 
 	/**
 	 * Query user based on parameter
-	 * @param param username or mobile or email
-	 * @return	return an user if exist, if not return null
+	 * 
+	 * @param param
+	 *            username or mobile or email
+	 * @return return an user if exist, if not return null
 	 */
 	User getUserByParam(String param);
+
+	/**
+	 * generate id
+	 */
+	void generateID(Map<String, String> params);
 
 }
