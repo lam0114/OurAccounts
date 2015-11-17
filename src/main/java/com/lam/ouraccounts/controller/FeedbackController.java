@@ -24,7 +24,6 @@ public class FeedbackController {
 	@ResponseBody
 	public String addFeedback(@RequestParam("feedbackContent") String feedbackContent,
 			@RequestParam(value = "feedbackAddress", required = false) String feedbackAddress) {
-		System.out.println("---------"+feedbackContent);
 		int r = feedbackService.addFeedback(feedbackContent, feedbackAddress);
 		Map<String, Integer> map = new HashMap<String, Integer>();
 		map.put("status", r);
